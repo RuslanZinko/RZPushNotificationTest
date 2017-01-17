@@ -17,15 +17,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        self.window = UIWindow.init(frame: UIScreen.main.bounds)
         
+        if EmailManager.sharedInstance.isEmailAlreadyExist() == false
+        {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "emailViewController")
+            self.window?.rootViewController = viewController
+            self.window?.makeKeyAndVisible();   
+        } else {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "NotificationsTableViewController")
+            self.window?.rootViewController = UINavigationController.init(rootViewController: viewController)
+            self.window?.makeKeyAndVisible();
+        }
        
         let appKey = "f90d5e5e-d631-4dde-af06-799cb992ee24"
-        OneSignal.initWithLaunchOptions(launchOptions, appId: appKey)
+        OneSignal.initWithLaunchOptions(launchOptions, appId: appKey) {(result) in
+            let payload = result?.notification.payload
+            let title = payload?.title
+            let subtitle = payload?.subtitle
+            let body = payload?.body
+            ResponseNotificationManager.sharedInstance.getResponseOfNotification(title: title!, subtitle: subtitle!, body: body!)
+            print("ьуііфпу \(title) \(subtitle) \(body)")
+        }
         return true
     }
-    
-    // func getcontext
-    
+        
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -53,6 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
     
+
+    func getContext () -> NSManagedObjectContext {
+        return self.persistentContainer.viewContext
+    }
     
     lazy var persistentContainer: NSPersistentContainer = {
         /*

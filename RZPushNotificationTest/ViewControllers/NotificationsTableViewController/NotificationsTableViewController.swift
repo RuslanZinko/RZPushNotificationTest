@@ -1,5 +1,5 @@
 //
-//  NotificationsTableViewcontroller.swift
+//  NotificationsTableViewController.swift
 //  RZPushNotificationTest
 //
 //  Created by Ruslan Zinko on 17.01.17.
@@ -8,16 +8,15 @@
 
 import UIKit
 
-class NotificationsTableViewcontroller: UITableViewController {
+class NotificationsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
     }
 
     override func didReceiveMemoryWarning() {

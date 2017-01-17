@@ -12,22 +12,15 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
-    var emailAddress: String = ""
  
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     //MARK: ValidationFunctions
     
     func isValidEmail(testStr:String) -> Bool {
-        // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
@@ -35,9 +28,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
     }
     
     func valuesValidation() {
-        emailAddress = emailTextField.text!
-        
-        if self.isValidEmail(testStr: emailAddress) == false {
+        if self.isValidEmail(testStr: emailTextField.text!) == false {
             let alertController = UIAlertController(title: "Error", message: "Please, enter correct E-Mail", preferredStyle:.alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
                 UIAlertAction in
@@ -50,9 +41,8 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
                 UIAlertAction in
                 NSLog("OK Pressed")
-                let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "notificationsTableViewController")
-                let navController = UINavigationController(rootViewController: VC1)
-                self.present(navController, animated:true, completion: nil)
+                self.presentNextController()
+                self.sendTag()
             }
             self.emailTextField.resignFirstResponder()
             alertController.addAction(okAction)
@@ -60,20 +50,22 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //MARK: UITextFieldDelegate
-    
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text == nil {
-            emailAddress = emailTextField.text!
-        }
+    func presentNextController () {
+        let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "NotificationsTableViewController")
+        let navController = UINavigationController(rootViewController: VC1)
+        self.present(navController, animated:true, completion: nil)
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.emailTextField.resignFirstResponder()
+    func sendTag() {
+        OneSignal.syncHashedEmail(emailTextField.text)
     }
-
+    
+    func saveEmailToMemory() {
+        EmailManager.sharedInstance.saveEmail(email: emailTextField.text)
+    }
+    
     @IBAction func continueButtonPressed(_ sender: Any) {
         self.valuesValidation()
+        self.saveEmailToMemory()
     }
 }

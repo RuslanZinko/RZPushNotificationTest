@@ -14,8 +14,11 @@
 		363C1EB41E2A6F5900A1EA19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 363C1EB31E2A6F5900A1EA19 /* Assets.xcassets */; };
 		363C1EB71E2A6F5900A1EA19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363C1EB51E2A6F5900A1EA19 /* LaunchScreen.storyboard */; };
 		36B7D69B1E2D360A001B87E3 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7D69A1E2D360A001B87E3 /* EmailViewController.swift */; };
-		36B7D69D1E2DCE75001B87E3 /* NotificationsTableViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewcontroller.swift */; };
+		36B7D69D1E2DCE75001B87E3 /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewController.swift */; };
 		36B7D6A11E2E20C2001B87E3 /* EmailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7D6A01E2E20C2001B87E3 /* EmailManager.swift */; };
+		C4BD70D31E2E91EF00CB562B /* NotificationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD70D11E2E91EF00CB562B /* NotificationEntity+CoreDataClass.swift */; };
+		C4BD70D41E2E91EF00CB562B /* NotificationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD70D21E2E91EF00CB562B /* NotificationEntity+CoreDataProperties.swift */; };
+		C4BD70D71E2E92BD00CB562B /* ResponseNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD70D61E2E92BD00CB562B /* ResponseNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +30,16 @@
 		363C1EB61E2A6F5900A1EA19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		363C1EB81E2A6F5900A1EA19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36B7D69A1E2D360A001B87E3 /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmailViewController.swift; path = ViewControllers/EmailViewController/EmailViewController.swift; sourceTree = "<group>"; };
-		36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewcontroller.swift; path = ViewControllers/NotificationsTableViewController/NotificationsTableViewcontroller.swift; sourceTree = "<group>"; };
+		36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = ViewControllers/NotificationsTableViewController/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		36B7D6A01E2E20C2001B87E3 /* EmailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmailManager.swift; path = DataClasses/EmailManager.swift; sourceTree = "<group>"; };
 		36B8FD631E2A73280023C493 /* RZPushNotificationTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RZPushNotificationTest.entitlements; sourceTree = "<group>"; };
 		36B8FD641E2A7F6F0023C493 /* RZPushNotificationTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RZPushNotificationTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		54D87550D5FF5B0C881EB9E1 /* Pods-RZPushNotificationTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZPushNotificationTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-RZPushNotificationTest/Pods-RZPushNotificationTest.release.xcconfig"; sourceTree = "<group>"; };
 		653F55954242D03167AE1790 /* Pods_RZPushNotificationTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RZPushNotificationTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F7B9AE92F37A44944A7367 /* Pods-RZPushNotificationTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RZPushNotificationTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RZPushNotificationTest/Pods-RZPushNotificationTest.debug.xcconfig"; sourceTree = "<group>"; };
+		C4BD70D11E2E91EF00CB562B /* NotificationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NotificationEntity+CoreDataClass.swift"; path = "DataClasses/NotificationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C4BD70D21E2E91EF00CB562B /* NotificationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NotificationEntity+CoreDataProperties.swift"; path = "DataClasses/NotificationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C4BD70D61E2E92BD00CB562B /* ResponseNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseNotificationManager.swift; path = DataClasses/ResponseNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				36B7D69A1E2D360A001B87E3 /* EmailViewController.swift */,
-				36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewcontroller.swift */,
+				36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -103,7 +109,9 @@
 		36B7D69F1E2E2010001B87E3 /* DataClasses */ = {
 			isa = PBXGroup;
 			children = (
+				C4BD70D51E2E924400CB562B /* CoreDataClasses */,
 				36B7D6A01E2E20C2001B87E3 /* EmailManager.swift */,
+				C4BD70D61E2E92BD00CB562B /* ResponseNotificationManager.swift */,
 			);
 			name = DataClasses;
 			sourceTree = "<group>";
@@ -115,6 +123,15 @@
 				54D87550D5FF5B0C881EB9E1 /* Pods-RZPushNotificationTest.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C4BD70D51E2E924400CB562B /* CoreDataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				C4BD70D11E2E91EF00CB562B /* NotificationEntity+CoreDataClass.swift */,
+				C4BD70D21E2E91EF00CB562B /* NotificationEntity+CoreDataProperties.swift */,
+			);
+			name = CoreDataClasses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,10 +268,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				363C1EB21E2A6F5900A1EA19 /* RZPushNotificationTest.xcdatamodeld in Sources */,
+				C4BD70D31E2E91EF00CB562B /* NotificationEntity+CoreDataClass.swift in Sources */,
 				36B7D6A11E2E20C2001B87E3 /* EmailManager.swift in Sources */,
+				C4BD70D41E2E91EF00CB562B /* NotificationEntity+CoreDataProperties.swift in Sources */,
 				363C1EAA1E2A6F5800A1EA19 /* AppDelegate.swift in Sources */,
-				36B7D69D1E2DCE75001B87E3 /* NotificationsTableViewcontroller.swift in Sources */,
+				36B7D69D1E2DCE75001B87E3 /* NotificationsTableViewController.swift in Sources */,
 				36B7D69B1E2D360A001B87E3 /* EmailViewController.swift in Sources */,
+				C4BD70D71E2E92BD00CB562B /* ResponseNotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
