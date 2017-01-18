@@ -16,6 +16,7 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     //MARK: ValidationFunctions
@@ -51,9 +52,8 @@ class EmailViewController: UIViewController, UITextFieldDelegate {
     }
     
     func presentNextController () {
-        let VC1 = self.storyboard!.instantiateViewController(withIdentifier: "NotificationsTableViewController")
-        let navController = UINavigationController(rootViewController: VC1)
-        self.present(navController, animated:true, completion: nil)
+        let notificationViewController = self.storyboard!.instantiateViewController(withIdentifier: "NotificationsTableViewController")
+        self.navigationController?.pushViewController(notificationViewController, animated: true)
     }
     
     func sendTag() {

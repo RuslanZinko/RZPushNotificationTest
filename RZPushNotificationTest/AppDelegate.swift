@@ -13,24 +13,25 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var navigationController: UINavigationController!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         
-        if EmailManager.sharedInstance.isEmailAlreadyExist() == false
+        
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var viewController = mainStoryboard.instantiateViewController(withIdentifier: "emailViewController")
+        
+        if EmailManager.sharedInstance.isEmailAlreadyExist() == true
         {
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "emailViewController")
-            self.window?.rootViewController = viewController
-            self.window?.makeKeyAndVisible();   
-        } else {
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let viewController = mainStoryboard.instantiateViewController(withIdentifier: "NotificationsTableViewController")
-            self.window?.rootViewController = UINavigationController.init(rootViewController: viewController)
-            self.window?.makeKeyAndVisible();
+                viewController = mainStoryboard.instantiateViewController(withIdentifier: "NotificationsTableViewController")
         }
+        
+        self.navigationController = UINavigationController.init(rootViewController: viewController)
+        self.window?.rootViewController = self.navigationController
+        self.window?.makeKeyAndVisible();
+
        
         let appKey = "f90d5e5e-d631-4dde-af06-799cb992ee24"
         OneSignal.initWithLaunchOptions(launchOptions, appId: appKey) {(result) in
@@ -38,13 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let title = payload?.title
             let subtitle = payload?.subtitle
             let body = payload?.body
-            ResponseNotificationManager.sharedInstance.getResponseOfNotification(title: title!, subtitle: subtitle!, body: body!)
-            print("ьуііфпу \(title) \(subtitle) \(body)")
+            ResponseNotificationManager.sharedInstance.getResponseOfNotification(title: title, subtitle: subtitle, body: body)
+            
+            let notificationVC = self.getNotificationViewController() 
+            if notificationVC != nil {
+                notificationVC!.refreshTableViewData()
+            }
         }
         return true
     }
-        
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -53,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -119,5 +124,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    fileprivate func getNotificationViewController() ->NotificationsTableViewController? {
+        var resultVC: NotificationsTableViewController? = nil
+        
+        for viewController in self.navigationController.viewControllers {
+            if let notificationVC =  viewController as? NotificationsTableViewController {
+                resultVC = notificationVC
+            }
+        }
+        return resultVC
+    }
 }
 
