@@ -13,6 +13,7 @@
 		363C1EB21E2A6F5900A1EA19 /* RZPushNotificationTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 363C1EB01E2A6F5900A1EA19 /* RZPushNotificationTest.xcdatamodeld */; };
 		363C1EB41E2A6F5900A1EA19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 363C1EB31E2A6F5900A1EA19 /* Assets.xcassets */; };
 		363C1EB71E2A6F5900A1EA19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363C1EB51E2A6F5900A1EA19 /* LaunchScreen.storyboard */; };
+		36524FD11E2F478A00D58EF6 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36524FD01E2F478A00D58EF6 /* NotificationCell.swift */; };
 		36B7D69B1E2D360A001B87E3 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7D69A1E2D360A001B87E3 /* EmailViewController.swift */; };
 		36B7D69D1E2DCE75001B87E3 /* NotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewController.swift */; };
 		36B7D6A11E2E20C2001B87E3 /* EmailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B7D6A01E2E20C2001B87E3 /* EmailManager.swift */; };
@@ -29,6 +30,7 @@
 		363C1EB31E2A6F5900A1EA19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		363C1EB61E2A6F5900A1EA19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		363C1EB81E2A6F5900A1EA19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36524FD01E2F478A00D58EF6 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationCell.swift; path = ViewControllers/NotificationCell/NotificationCell.swift; sourceTree = "<group>"; };
 		36B7D69A1E2D360A001B87E3 /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmailViewController.swift; path = ViewControllers/EmailViewController/EmailViewController.swift; sourceTree = "<group>"; };
 		36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationsTableViewController.swift; path = ViewControllers/NotificationsTableViewController/NotificationsTableViewController.swift; sourceTree = "<group>"; };
 		36B7D6A01E2E20C2001B87E3 /* EmailManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EmailManager.swift; path = DataClasses/EmailManager.swift; sourceTree = "<group>"; };
@@ -97,9 +99,18 @@
 			path = RZPushNotificationTest;
 			sourceTree = "<group>";
 		};
+		36524FCF1E2F471A00D58EF6 /* NotificationCell */ = {
+			isa = PBXGroup;
+			children = (
+				36524FD01E2F478A00D58EF6 /* NotificationCell.swift */,
+			);
+			name = NotificationCell;
+			sourceTree = "<group>";
+		};
 		36B7D69E1E2E1FBD001B87E3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				36524FCF1E2F471A00D58EF6 /* NotificationCell */,
 				36B7D69A1E2D360A001B87E3 /* EmailViewController.swift */,
 				36B7D69C1E2DCE75001B87E3 /* NotificationsTableViewController.swift */,
 			);
@@ -268,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				363C1EB21E2A6F5900A1EA19 /* RZPushNotificationTest.xcdatamodeld in Sources */,
+				36524FD11E2F478A00D58EF6 /* NotificationCell.swift in Sources */,
 				C4BD70D31E2E91EF00CB562B /* NotificationEntity+CoreDataClass.swift in Sources */,
 				36B7D6A11E2E20C2001B87E3 /* EmailManager.swift in Sources */,
 				C4BD70D41E2E91EF00CB562B /* NotificationEntity+CoreDataProperties.swift in Sources */,

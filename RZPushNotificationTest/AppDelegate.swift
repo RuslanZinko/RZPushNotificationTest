@@ -38,12 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let title = payload?.title
             let subtitle = payload?.subtitle
             let body = payload?.body
-            ResponseNotificationManager.sharedInstance.getResponseOfNotification(title: title!, subtitle: subtitle!, body: body!)
+            ResponseNotificationManager.sharedInstance.getResponseOfNotification(title: title, subtitle: subtitle, body: body)
             print("ьуііфпу \(title) \(subtitle) \(body)")
         }
         return true
     }
-        
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

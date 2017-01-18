@@ -7,45 +7,57 @@
 //
 
 import UIKit
+import CoreData
 
 class NotificationsTableViewController: UITableViewController {
+    
+    var notificationsData : [NSManagedObject] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.addSubview(blurEffectView)
+        notificationsData = ResponseNotificationManager.sharedInstance.getDataFromTheBase()
+
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return notificationsData.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell:NotificationCell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationCell
+        
+        let currentNotification = notificationsData[indexPath.row]
 
-        // Configure the cell...
+        cell.titleLabel.text = currentNotification.value(forKey: "title") as? String
+        cell.subtitleLabel.text = currentNotification.value(forKey: "subtitle") as? String
+        cell.contentLabel.text = currentNotification.value(forKey: "content") as? String
 
         return cell
     }
-    */
-
+ 
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+//    {
+//        return true
+//    }
+//
+//    
+//     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//        if editingStyle == UITableViewCellEditingStyle.delete {
+//            tableView.beginUpdates()
+//            notificationsData.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.right)
+//            tableView.endUpdates()
+//        }
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
