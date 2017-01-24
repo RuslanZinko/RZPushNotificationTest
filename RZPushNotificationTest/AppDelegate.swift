@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import HockeySDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.window = UIWindow.init(frame: UIScreen.main.bounds)
         
+        BITHockeyManager.shared().configure(withIdentifier: "b282f9771d7041f19c5671d6f59b24df")
+        BITHockeyManager.shared().start()
+        BITHockeyManager.shared().authenticator.authenticateInstallation()
         
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var viewController = mainStoryboard.instantiateViewController(withIdentifier: "emailViewController")
